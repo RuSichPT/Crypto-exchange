@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.github.RuSichPT</groupId>
 	<artifactId>Crypto-exchange</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>Crypto-exchange</name>
 	<description>Test project for an internship at RELEX</description>
 	<properties>
@@ -44,6 +44,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.vaadin.external.google</groupId>
+					<artifactId>android-json</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
