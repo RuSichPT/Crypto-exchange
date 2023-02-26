@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import static com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName.*;
+
 @Entity
 @Table(name = "currencies")
 @Data
@@ -57,5 +59,17 @@ public class Currency {
         }
 
         return json;
+    }
+
+    public Double getValue(CurrencyName name) {
+        if (name.equals(BTC)) {
+            return getBtc();
+        } else if (name.equals(TON)) {
+            return getTon();
+        } else if (name.equals(RUB)) {
+            return getRub();
+        }
+
+        throw new RuntimeException("Валюта с таким именем" + name.getName() + " отсутствует");
     }
 }

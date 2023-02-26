@@ -12,9 +12,6 @@ import java.util.HashMap;
 @Service
 public class WalletServiceImpl implements WalletService {
 
-    private static final String CURRENCY = "currency";
-    private static final String COUNT = "count";
-
     private static final String NOT_ENOUGH = "Недостаточно средств для снятия";
 
     @Autowired
@@ -60,16 +57,24 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public HashMap<String, String> withdrawWallet(JSONObject jsonObject, Wallet wallet) {
+    // TODO: 26.02.2023 кастыль, переделать fillUpWallet
+    public void fillUpWallet2(Wallet wallet, CurrencyName currencyName, Double count) {
+        double sum = wallet.getValue(currencyName) + count;
+        wallet.setValue(currencyName, sum);
+        saveWallet(wallet);
+    }
+
+    @Override
+    public HashMap<String, String> withdrawWallet(Wallet wallet, CurrencyName currencyName, Double count) {
         HashMap<String, String> responseMap = new HashMap<>();
-        String currency = (String) jsonObject.get(CURRENCY);
-        String count = (String) jsonObject.get(COUNT);
+        String currency = currencyName.getName();
 
         for (CurrencyName name :
                 CurrencyName.values()) {
             if (currency.equals(name.getName())) {
-                Double difference = wallet.getValue(name) - Double.parseDouble(count);
-                if (difference >= 0) {
+
+                if (wallet.isEnoughMoney(name, count)) {
+                    Double difference = wallet.getValue(name) - count;
                     wallet.setValue(name, difference);
                     responseMap.put(name.getNameWallet(), String.valueOf(difference));
                 } else {

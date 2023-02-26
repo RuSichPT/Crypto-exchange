@@ -51,4 +51,10 @@ public class Wallet {
 
         throw new RuntimeException("Кошелек с таким именем" + name.getName() + " отсутствует");
     }
+
+    public boolean isEnoughMoney(CurrencyName currencyName, Double money) {
+        double difference = getValue(currencyName) - money;
+
+        return difference >= 0;
+    }
 }

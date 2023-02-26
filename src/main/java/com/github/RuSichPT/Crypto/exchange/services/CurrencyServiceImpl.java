@@ -2,9 +2,12 @@ package com.github.RuSichPT.Crypto.exchange.services;
 
 import com.github.RuSichPT.Crypto.exchange.repositories.CurrencyRepository;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Currency;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,8 +39,8 @@ public class CurrencyServiceImpl implements CurrencyService {
 
         Collections.addAll(currencies, ton, btc, rub);
 
-        for (Currency c:
-             currencies) {
+        for (Currency c :
+                currencies) {
             saveCurrency(c);
         }
     }
@@ -47,5 +50,21 @@ public class CurrencyServiceImpl implements CurrencyService {
         String currency = (String) jsonObject.get(CURRENCY);
 
         return currencyRepository.findById(currency);
+    }
+
+    @Override
+    public Double exchangeCurrency(CurrencyName currencyFrom, CurrencyName currencyTo, Double amountFrom) {
+        Optional<Currency> optCurrency = currencyRepository.findById(currencyFrom.getName());
+
+        if (optCurrency.isPresent()) {
+            Currency currency = optCurrency.get();
+
+            Double currencyToValue = currency.getValue(currencyTo);
+
+            return currencyToValue * amountFrom;
+
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
     }
 }
