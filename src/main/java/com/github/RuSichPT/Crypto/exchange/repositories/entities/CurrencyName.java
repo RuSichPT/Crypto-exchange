@@ -6,7 +6,7 @@ import java.util.Collections;
 public enum CurrencyName {
 
     BTC("BTC"),
-    TOB("TON"),
+    TON("TON"),
     RUB("RUB");
     private final String name;
 

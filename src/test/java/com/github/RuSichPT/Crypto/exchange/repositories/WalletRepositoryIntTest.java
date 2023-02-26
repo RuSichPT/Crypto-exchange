@@ -21,7 +21,7 @@ public class WalletRepositoryIntTest {
 
     @Test
     @Sql(scripts = {"/sql/delete_tables.sql", "/sql/insert_wallet.sql"})
-    void shouldCorrectlyUpdateWallet() {
+    public void shouldCorrectlyUpdateWallet() {
         Integer id = 1;
         Double rub = 1500.0;
         Wallet newWallet = new Wallet();

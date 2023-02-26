@@ -24,7 +24,7 @@ public class Wallet {
 
     @Column
     @JsonProperty("TON_wallet")
-    private Double tob = 0.0;
+    private Double ton = 0.0;
 
     @Column
     @JsonProperty("RUB_wallet")
@@ -33,8 +33,8 @@ public class Wallet {
     public void setValue(CurrencyName name, double value) {
         if (name.equals(BTC)) {
             setBtc(value);
-        } else if (name.equals(TOB)) {
-            setTob(value);
+        } else if (name.equals(TON)) {
+            setTon(value);
         } else if (name.equals(RUB)) {
             setRub(value);
         }
@@ -43,8 +43,8 @@ public class Wallet {
     public Double getValue(CurrencyName name) {
         if (name.equals(BTC)) {
             return getBtc();
-        } else if (name.equals(TOB)) {
-            return getTob();
+        } else if (name.equals(TON)) {
+            return getTon();
         } else if (name.equals(RUB)) {
             return getRub();
         }

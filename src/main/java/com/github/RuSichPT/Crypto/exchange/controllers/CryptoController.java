@@ -1,7 +1,9 @@
 package com.github.RuSichPT.Crypto.exchange.controllers;
 
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.Currency;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.User;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Wallet;
+import com.github.RuSichPT.Crypto.exchange.services.CurrencyService;
 import com.github.RuSichPT.Crypto.exchange.services.UserService;
 import com.github.RuSichPT.Crypto.exchange.services.WalletService;
 import org.json.JSONObject;
@@ -15,7 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("crypto")
-public class UserController {
+public class CryptoController {
 
     private static final String SECRET_KEY = "secret_key";
     private static final String REFUSAL = "Такой пользователь уже существует. Отказ в регистрации!";
@@ -24,13 +26,17 @@ public class UserController {
     @Autowired
     private final WalletService walletService;
 
-    public UserController(UserService userService, WalletService walletService) {
+    @Autowired
+    private final CurrencyService currencyService;
+
+    public CryptoController(UserService userService, WalletService walletService, CurrencyService currencyService) {
         this.userService = userService;
         this.walletService = walletService;
+        this.currencyService = currencyService;
     }
 
     @PostMapping(path = "registration")
-    public String saveUser(@RequestBody User user) {
+    public String registerUser(@RequestBody User user) {
         HashMap<String, String> responseMap = new HashMap<>();
         Optional<User> optionalUser = userService.findUserByNameOrEmail(user.getUserName(), user.getEmail());
 
@@ -93,4 +99,28 @@ public class UserController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping(path = "currency")
+    public String getCurrency(@RequestBody String jsonString){
+        JSONObject jsonObject = new JSONObject(jsonString);
+        String secretKey = (String) jsonObject.get(SECRET_KEY);
+        Optional<User> optionalUser = userService.findUserBySecretKey(secretKey);
+
+        if (optionalUser.isPresent()) {
+
+            Optional<Currency> optCurrency = currencyService.findCurrency(jsonObject);
+
+            if (optCurrency.isEmpty()){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            }
+            Currency currency = optCurrency.get();
+
+            return currency.asJson().toString();
+
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
 }

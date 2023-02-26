@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS wallets;
 CREATE TABLE wallets(
     id SERIAL PRIMARY KEY,
     btc NUMERIC,
-    tob NUMERIC,
+    ton NUMERIC,
     rub NUMERIC
 );
 
