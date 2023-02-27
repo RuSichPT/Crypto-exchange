@@ -61,6 +61,16 @@ public class Currency {
         return json;
     }
 
+    public void setValue(CurrencyName name, double value) {
+        if (name.equals(BTC)) {
+            setBtc(value);
+        } else if (name.equals(TON)) {
+            setTon(value);
+        } else if (name.equals(RUB)) {
+            setRub(value);
+        }
+    }
+
     public Double getValue(CurrencyName name) {
         if (name.equals(BTC)) {
             return getBtc();

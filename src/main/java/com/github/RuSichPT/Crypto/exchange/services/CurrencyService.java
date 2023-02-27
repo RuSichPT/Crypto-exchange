@@ -14,4 +14,6 @@ public interface CurrencyService {
 
     Double exchangeCurrency(CurrencyName currencyFrom, CurrencyName currencyTo, Double amountFrom);
 
+    void changeCurrency(CurrencyName baseCurrency, CurrencyName CurrencyToChange, Double value);
+
 }

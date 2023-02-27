@@ -1,4 +1,4 @@
-package com.github.RuSichPT.Crypto.exchange.controllers.json;
+package com.github.RuSichPT.Crypto.exchange.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

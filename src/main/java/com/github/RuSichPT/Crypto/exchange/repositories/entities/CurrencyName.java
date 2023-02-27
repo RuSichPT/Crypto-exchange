@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public enum CurrencyName {
-
     BTC("BTC"),
     TON("TON"),
     RUB("RUB");

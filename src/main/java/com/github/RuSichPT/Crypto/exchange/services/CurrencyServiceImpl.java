@@ -67,4 +67,16 @@ public class CurrencyServiceImpl implements CurrencyService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @Override
+    public void changeCurrency(CurrencyName baseCurrency, CurrencyName CurrencyToChange, Double value) {
+        Optional<Currency> optCurrency = currencyRepository.findById(baseCurrency.getName());
+        if (optCurrency.isPresent()) {
+            Currency currency = optCurrency.get();
+            currency.setValue(CurrencyToChange, value);
+            currencyRepository.save(currency);
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+    }
 }
