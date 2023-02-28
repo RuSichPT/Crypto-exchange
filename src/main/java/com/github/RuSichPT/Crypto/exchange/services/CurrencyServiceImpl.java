@@ -1,9 +1,10 @@
 package com.github.RuSichPT.Crypto.exchange.services;
 
+import com.github.RuSichPT.Crypto.exchange.exception.CryptoException;
+import com.github.RuSichPT.Crypto.exchange.exception.errors.ErrorName;
 import com.github.RuSichPT.Crypto.exchange.repositories.CurrencyRepository;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Currency;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -46,10 +47,12 @@ public class CurrencyServiceImpl implements CurrencyService {
     }
 
     @Override
-    public Optional<Currency> findCurrency(JSONObject jsonObject) {
-        String currency = (String) jsonObject.get(CURRENCY);
-
-        return currencyRepository.findById(currency);
+    public Currency findCurrency(CurrencyName name) {
+        Optional<Currency> optCurrency = currencyRepository.findById(name.getName());
+        if (optCurrency.isEmpty()) {
+            throw new CryptoException(ErrorName.NOT_VALID_SECRET_KEY);
+        }
+        return optCurrency.get();
     }
 
     @Override

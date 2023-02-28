@@ -5,7 +5,7 @@ import com.github.RuSichPT.Crypto.exchange.repositories.entities.WalletName;
 import lombok.Data;
 
 @Data
-public class WithdrawRequest {
+public class FillUpRequest {
     @JsonProperty("secret_key")
     private String secretKey;
 
@@ -14,10 +14,4 @@ public class WithdrawRequest {
 
     @JsonProperty("value")
     private Double value;
-
-    @JsonProperty("credit_card")
-    private String creditCard;
-
-    @JsonProperty("wallet")
-    private String walletAddress;
 }

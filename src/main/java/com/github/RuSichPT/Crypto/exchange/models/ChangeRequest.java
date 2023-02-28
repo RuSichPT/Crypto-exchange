@@ -4,17 +4,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName;
 import lombok.Data;
 
+import java.util.Map;
+
 @Data
-public class ExchangeRequest {
+public class ChangeRequest {
     @JsonProperty("secret_key")
     private String secretKey;
 
-    @JsonProperty("currency_from")
-    private CurrencyName currencyFrom;
+    @JsonProperty("base_currency")
+    private CurrencyName baseCurrency;
 
-    @JsonProperty("currency_to")
-    private CurrencyName currencyTo;
-
-    @JsonProperty("amount")
-    private Double amountFrom;
+    Map<CurrencyName, Double> currencies;
 }

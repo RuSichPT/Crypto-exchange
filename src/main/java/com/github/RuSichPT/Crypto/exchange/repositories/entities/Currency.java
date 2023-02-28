@@ -3,12 +3,13 @@ package com.github.RuSichPT.Crypto.exchange.repositories.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import org.json.JSONObject;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName.*;
 
@@ -43,22 +44,20 @@ public class Currency {
     public Currency() {
     }
 
-    public JSONObject asJson() {
-        JSONObject json = new JSONObject();
+    public Map<CurrencyName, Double> asMap() {
+        HashMap<CurrencyName, Double> map = new HashMap<>();
 
-        for (CurrencyName currencyName :
+        for (CurrencyName name :
                 CurrencyName.values()) {
-            String name = currencyName.getName();
-            if (!name.equals(this.name)) {
+            if (!name.getName().equals(this.name)) {
                 switch (name) {
-                    case "BTC" -> json.put(name, btc);
-                    case "TON" -> json.put(name, ton);
-                    case "RUB" -> json.put(name, rub);
+                    case BTC -> map.put(name, btc);
+                    case TON -> map.put(name, ton);
+                    case RUB -> map.put(name, rub);
                 }
             }
         }
-
-        return json;
+        return map;
     }
 
     public void setValue(CurrencyName name, double value) {

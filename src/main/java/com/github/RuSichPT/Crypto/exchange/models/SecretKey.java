@@ -5,7 +5,6 @@ import lombok.Getter;
 
 @Getter
 public class SecretKey {
-
     @JsonProperty("secret_key")
     private String value;
 

@@ -5,16 +5,10 @@ import com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName;
 import lombok.Data;
 
 @Data
-public class ExchangeRequest {
+public class CurrencyRequest {
     @JsonProperty("secret_key")
     private String secretKey;
 
-    @JsonProperty("currency_from")
-    private CurrencyName currencyFrom;
-
-    @JsonProperty("currency_to")
-    private CurrencyName currencyTo;
-
-    @JsonProperty("amount")
-    private Double amountFrom;
+    @JsonProperty("currency")
+    private CurrencyName currencyName;
 }

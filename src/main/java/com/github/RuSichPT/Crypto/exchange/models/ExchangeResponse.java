@@ -2,11 +2,12 @@ package com.github.RuSichPT.Crypto.exchange.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class ExchangeResponse {
-
     @JsonProperty("currency_from")
     private CurrencyName currencyFrom;
 
@@ -18,11 +19,4 @@ public class ExchangeResponse {
 
     @JsonProperty("amount_to")
     private Double amountTo;
-
-    public ExchangeResponse(CurrencyName currencyFrom, CurrencyName currencyTo, Double amountFrom, Double amountTo) {
-        this.currencyFrom = currencyFrom;
-        this.currencyTo = currencyTo;
-        this.amountFrom = amountFrom;
-        this.amountTo = amountTo;
-    }
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 import static com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName.*;
+import static com.github.RuSichPT.Crypto.exchange.repositories.entities.WalletName.*;
 
 @Entity
 @Data
@@ -30,30 +31,30 @@ public class Wallet {
     @JsonProperty("RUB_wallet")
     private Double rub = 0.0;
 
-    public void setValue(CurrencyName name, double value) {
-        if (name.equals(BTC)) {
+    public void setValue(WalletName name, double value) {
+        if (name.equals(BTC_WALLET)) {
             setBtc(value);
-        } else if (name.equals(TON)) {
+        } else if (name.equals(TON_WALLET)) {
             setTon(value);
-        } else if (name.equals(RUB)) {
+        } else if (name.equals(RUB_WALLET)) {
             setRub(value);
         }
     }
 
-    public Double getValue(CurrencyName name) {
-        if (name.equals(BTC)) {
+    public Double getValue(WalletName name) {
+        if (name.equals(BTC_WALLET)) {
             return getBtc();
-        } else if (name.equals(TON)) {
+        } else if (name.equals(TON_WALLET)) {
             return getTon();
-        } else if (name.equals(RUB)) {
+        } else if (name.equals(RUB_WALLET)) {
             return getRub();
         }
 
         throw new RuntimeException("Кошелек с таким именем" + name.getName() + " отсутствует");
     }
 
-    public boolean isEnoughMoney(CurrencyName currencyName, Double money) {
-        double difference = getValue(currencyName) - money;
+    public boolean isEnoughMoney(WalletName name, Double value) {
+        double difference = getValue(name) - value;
 
         return difference >= 0;
     }

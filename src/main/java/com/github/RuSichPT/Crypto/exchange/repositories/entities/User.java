@@ -1,5 +1,6 @@
 package com.github.RuSichPT.Crypto.exchange.repositories.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import org.springframework.util.DigestUtils;
@@ -17,13 +18,16 @@ public class User {
     private String userName;
 
     @Column(name = "email", unique = true)
+    @JsonProperty("email")
     private String email;
 
     @Column(name = "secret_key")
+    @JsonIgnore
     private String secretKey;
 
     @OneToOne
     @JoinColumn(name = "wallet_id", referencedColumnName = "id")
+    @JsonIgnore
     private Wallet wallet;
 
     public User(String userName, String email, Wallet wallet) {

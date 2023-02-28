@@ -1,10 +1,7 @@
 package com.github.RuSichPT.Crypto.exchange.services;
 
-import com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Wallet;
-import org.json.JSONObject;
-
-import java.util.HashMap;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.WalletName;
 
 public interface WalletService {
 
@@ -12,10 +9,8 @@ public interface WalletService {
 
     Wallet createWallet();
 
-    HashMap<String, String> fillUpWallet(JSONObject jsonObject, Wallet wallet);
+    void fillUpWallet(Wallet wallet, WalletName name, Double value);
 
-    void fillUpWallet2(Wallet wallet, CurrencyName currencyName, Double count);
-
-    HashMap<String, String> withdrawWallet(Wallet wallet, CurrencyName currencyName, Double count);
+    void withdrawWallet(Wallet wallet, WalletName name, Double value);
 
 }
