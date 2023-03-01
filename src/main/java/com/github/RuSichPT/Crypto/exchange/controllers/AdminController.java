@@ -3,8 +3,8 @@ package com.github.RuSichPT.Crypto.exchange.controllers;
 import com.github.RuSichPT.Crypto.exchange.models.ChangeRequest;
 import com.github.RuSichPT.Crypto.exchange.models.TransactionResponse;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Currency;
-import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.CurrencyName;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Transaction;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.CurrencyName;
 import com.github.RuSichPT.Crypto.exchange.services.AdminService;
 import com.github.RuSichPT.Crypto.exchange.services.CurrencyService;
 import com.github.RuSichPT.Crypto.exchange.services.TransactionService;
@@ -38,7 +38,10 @@ public class AdminController {
 
     @GetMapping(path = "currency")
 
-    public Map<CurrencyName, Double> getCurrency(@RequestParam String secretKey, @RequestParam CurrencyName currencyName) throws ResponseStatusException {
+    public Map<CurrencyName, Double> getCurrency(
+            @RequestParam String secretKey,
+            @RequestParam CurrencyName currencyName) throws ResponseStatusException {
+
         if (adminService.isAdmin(secretKey) || userService.hasUser(secretKey)) {
             Currency currency = currencyService.findCurrency(currencyName);
             return currency.asMap();
@@ -76,7 +79,8 @@ public class AdminController {
             @DateTimeFormat(pattern = "dd.MM.yyyy") java.util.Date dateTo) {
 
         adminService.findAdminBySecretKey(secretKey);
-        List<Transaction> transactions = transactionService.getTransactions(new Date(dateFrom.getTime()), new Date(dateTo.getTime()));
+        List<Transaction> transactions = transactionService
+                .getTransactions(new Date(dateFrom.getTime()), new Date(dateTo.getTime()));
 
         return new TransactionResponse(transactions.size());
     }

@@ -48,10 +48,10 @@ public class CurrencyServiceImpl implements CurrencyService {
     }
 
     @Override
-    public Currency findCurrency(CurrencyName name) {
+    public Currency findCurrency(CurrencyName name) throws CryptoException {
         Optional<Currency> optCurrency = currencyRepository.findById(name.getName());
         if (optCurrency.isEmpty()) {
-            throw new CryptoException(ErrorName.NOT_VALID_SECRET_KEY);
+            throw new CryptoException(ErrorName.NOT_FOUND_CURRENCY);
         }
         return optCurrency.get();
     }
