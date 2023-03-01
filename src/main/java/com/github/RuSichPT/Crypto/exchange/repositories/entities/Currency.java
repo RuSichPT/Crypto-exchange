@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.RuSichPT.Crypto.exchange.exception.CryptoException;
 import com.github.RuSichPT.Crypto.exchange.exception.errors.ErrorName;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.CurrencyName;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName.*;
+import static com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.CurrencyName.*;
 
 @Entity
 @Table(name = "currencies")

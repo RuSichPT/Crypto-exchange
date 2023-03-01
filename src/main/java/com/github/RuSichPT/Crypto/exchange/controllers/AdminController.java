@@ -3,7 +3,7 @@ package com.github.RuSichPT.Crypto.exchange.controllers;
 import com.github.RuSichPT.Crypto.exchange.models.ChangeRequest;
 import com.github.RuSichPT.Crypto.exchange.models.TransactionResponse;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Currency;
-import com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.CurrencyName;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Transaction;
 import com.github.RuSichPT.Crypto.exchange.services.AdminService;
 import com.github.RuSichPT.Crypto.exchange.services.CurrencyService;

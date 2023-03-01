@@ -1,7 +1,7 @@
 package com.github.RuSichPT.Crypto.exchange.services;
 
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Currency;
-import com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.CurrencyName;
 
 public interface CurrencyService {
 

@@ -1,4 +1,4 @@
-package com.github.RuSichPT.Crypto.exchange.repositories.entities;
+package com.github.RuSichPT.Crypto.exchange.repositories.entities.enums;
 
 public enum WalletName {
     BTC_WALLET("BTC_wallet"),

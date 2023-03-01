@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.RuSichPT.Crypto.exchange.exception.CryptoException;
 import com.github.RuSichPT.Crypto.exchange.exception.errors.ErrorName;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.WalletName;
 import lombok.Data;
 
 import javax.persistence.*;
 
-import static com.github.RuSichPT.Crypto.exchange.repositories.entities.WalletName.*;
+import static com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.WalletName.*;
 
 @Entity
 @Data

@@ -1,7 +1,7 @@
 package com.github.RuSichPT.Crypto.exchange.services;
 
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Transaction;
-import com.github.RuSichPT.Crypto.exchange.repositories.entities.TransactionName;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.TransactionName;
 
 import java.sql.Date;
 import java.util.List;

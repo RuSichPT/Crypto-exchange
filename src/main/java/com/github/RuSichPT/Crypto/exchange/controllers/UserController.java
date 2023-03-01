@@ -2,6 +2,9 @@ package com.github.RuSichPT.Crypto.exchange.controllers;
 
 import com.github.RuSichPT.Crypto.exchange.models.*;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.*;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.CurrencyName;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.TransactionName;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.WalletName;
 import com.github.RuSichPT.Crypto.exchange.services.CurrencyService;
 import com.github.RuSichPT.Crypto.exchange.services.TransactionService;
 import com.github.RuSichPT.Crypto.exchange.services.UserService;
