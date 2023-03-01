@@ -37,7 +37,19 @@
 - PostgresSQL
 - Flyway
 - Swagger
-- DataJpaTest
+- DataJpaTest  
+
+## Запуск
+Создать базу данных
+
+    localhost:5432/crypto_db  
+
+Заполнить в  application.properties следующие поля: 
+
+    spring.datasource.username=${DATA_BASE_USERNAME}  
+    spring.datasource.password=${DATA_BASE_PASSWORD}  
+
+Или создать переменные среды DATA_BASE_USERNAME, DATA_BASE_PASSWORD
 
 # Описание API предоставляется в формате Swagger (Open API):
 
