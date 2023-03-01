@@ -1,17 +1,21 @@
 package com.github.RuSichPT.Crypto.exchange.services;
 
+import com.github.RuSichPT.Crypto.exchange.exception.CryptoException;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.User;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Wallet;
-import com.github.RuSichPT.Crypto.exchange.repositories.entities.WalletName;
+
+import java.util.Map;
 
 public interface UserService {
 
-    User createUser(String userName, String email, Wallet wallet);
+    User createUser(String userName, String email, Wallet wallet) throws CryptoException;
 
     boolean hasUser(String username, String email);
 
-    User findUserBySecretKey(String secretKey);
+    boolean hasUser(String secretKey);
 
-    double getAllMoney(WalletName walletName);
+    User findUserBySecretKey(String secretKey) throws CryptoException;
+
+    Map<CurrencyName, Double> getAllMoney(CurrencyName name);
 }

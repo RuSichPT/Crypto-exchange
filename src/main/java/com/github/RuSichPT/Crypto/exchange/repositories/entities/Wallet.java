@@ -2,11 +2,12 @@ package com.github.RuSichPT.Crypto.exchange.repositories.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.RuSichPT.Crypto.exchange.exception.CryptoException;
+import com.github.RuSichPT.Crypto.exchange.exception.errors.ErrorName;
 import lombok.Data;
 
 import javax.persistence.*;
 
-import static com.github.RuSichPT.Crypto.exchange.repositories.entities.CurrencyName.*;
 import static com.github.RuSichPT.Crypto.exchange.repositories.entities.WalletName.*;
 
 @Entity
@@ -41,7 +42,7 @@ public class Wallet {
         }
     }
 
-    public Double getValue(WalletName name) {
+    public Double getValue(WalletName name) throws CryptoException {
         if (name.equals(BTC_WALLET)) {
             return getBtc();
         } else if (name.equals(TON_WALLET)) {
@@ -50,7 +51,7 @@ public class Wallet {
             return getRub();
         }
 
-        throw new RuntimeException("Кошелек с таким именем" + name.getName() + " отсутствует");
+        throw new CryptoException(ErrorName.NOT_FOUND_WALLET);
     }
 
     public boolean isEnoughMoney(WalletName name, Double value) {

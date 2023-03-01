@@ -1,5 +1,7 @@
 package com.github.RuSichPT.Crypto.exchange.services;
 
+import com.github.RuSichPT.Crypto.exchange.exception.CryptoException;
+import com.github.RuSichPT.Crypto.exchange.exception.errors.ErrorName;
 import com.github.RuSichPT.Crypto.exchange.repositories.AdminRepository;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,17 @@ public class AdminServiceImpl implements AdminService {
         adminRepository.save(admin);
 
         return admin;
+    }
+
+    @Override
+    public Admin findAdminBySecretKey(String secretKey) throws CryptoException {
+        Optional<Admin> optAdmin = adminRepository.findBySecretKey(secretKey);
+
+        if (optAdmin.isPresent()) {
+            return optAdmin.get();
+        } else {
+            throw new CryptoException(ErrorName.FORBIDDEN);
+        }
     }
 
     @Override

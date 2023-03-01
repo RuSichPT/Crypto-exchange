@@ -1,0 +1,445 @@
+{
+	"info": {
+		"_postman_id": "dfc0c6c2-20b3-4c1c-80f4-74ca15c5b81f",
+		"name": "Crypto-exchange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Post registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"username\": \"vasya_vezunchik\",  \r\n    \"email\": \"vasyu_kolbasit@mail.ru\"  \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/registration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post registration 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"username\": \"vasya123_vezunchik\",  \r\n    \"email\": \"vasyu123_kolbasit@mail.ru\"  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/registration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get wallet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/wallet?secretKey=1ce21b405cf5dcaa8eb553f1ef9a03d5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"wallet"
+							],
+							"query": [
+								{
+									"key": "secretKey",
+									"value": "1ce21b405cf5dcaa8eb553f1ef9a03d5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get wallet 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/wallet?secretKey=a0027722c55ca9af0ca748e02b8cc784",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"wallet"
+							],
+							"query": [
+								{
+									"key": "secretKey",
+									"value": "a0027722c55ca9af0ca748e02b8cc784"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"secret_key\": \"1ce21b405cf5dcaa8eb553f1ef9a03d5\",\r\n    \"wallet_name\": \"RUB_WALLET\",\r\n    \"value\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/wallet/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"wallet",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post add1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"secret_key\": \"a0027722c55ca9af0ca748e02b8cc784\",\r\n\t\"wallet_name\": \"RUB_WALLET\",\r\n    \"value\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/wallet/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"wallet",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post subtract",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"secret_key\": \"1ce21b405cf5dcaa8eb553f1ef9a03d5\",\r\n\t\"wallet_name\": \"RUB_WALLET\",\r\n\t\"value\": \"1000\",\r\n\t\"wallet\": \"AsS5A2SASd2as3q5sd2asd53a1s5\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/wallet/subtract",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"wallet",
+								"subtract"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post exchange",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"secret_key\": \"1ce21b405cf5dcaa8eb553f1ef9a03d5\",\r\n\t\"currency_from\": \"RUB\",\r\n\t\"currency_to\": \"TON\",\r\n\t\"amount\": \"2000\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/wallet/exchange",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"wallet",
+								"exchange"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ger currency",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/currency?secretKey=1ce21b405cf5dcaa8eb553f1ef9a03d5&currencyName=TON",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"currency"
+							],
+							"query": [
+								{
+									"key": "secretKey",
+									"value": "1ce21b405cf5dcaa8eb553f1ef9a03d5"
+								},
+								{
+									"key": "currencyName",
+									"value": "TON"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Ger currency admin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/currency?secretKey=29e60d5ed9e91b1490501aa197c90515&currencyName=TON",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"currency"
+							],
+							"query": [
+								{
+									"key": "secretKey",
+									"value": "29e60d5ed9e91b1490501aa197c90515"
+								},
+								{
+									"key": "currencyName",
+									"value": "TON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post change admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"secret_key\": \"29e60d5ed9e91b1490501aa197c90515\",\r\n\t\"base_currency\": \"TON\",\r\n    \"currencies\":\r\n     {\r\n        \"BTC\": \"0.000096\",\r\n        \"RUB\": \"182\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/currency/change",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"currency",
+								"change"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get sum admin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/currency/stat/sum?secretKey=29e60d5ed9e91b1490501aa197c90515&currencyName=RUB",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"currency",
+								"stat",
+								"sum"
+							],
+							"query": [
+								{
+									"key": "secretKey",
+									"value": "29e60d5ed9e91b1490501aa197c90515"
+								},
+								{
+									"key": "currencyName",
+									"value": "RUB"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get transaction admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"secret_key\": \"29e60d5ed9e91b1490501aa197c90515\",\r\n\t\"date_from\": \"2023-02-26\",\r\n\t\"date_to\": \"2023-02-28\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/crypto/currency/stat/transaction?secretKey=29e60d5ed9e91b1490501aa197c90515&dateFrom=26.02.2023&dateTo=01.03.2023",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"crypto",
+								"currency",
+								"stat",
+								"transaction"
+							],
+							"query": [
+								{
+									"key": "secretKey",
+									"value": "29e60d5ed9e91b1490501aa197c90515"
+								},
+								{
+									"key": "dateFrom",
+									"value": "26.02.2023"
+								},
+								{
+									"key": "dateTo",
+									"value": "01.03.2023"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

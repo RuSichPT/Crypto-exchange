@@ -2,6 +2,8 @@ package com.github.RuSichPT.Crypto.exchange.repositories.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.RuSichPT.Crypto.exchange.exception.CryptoException;
+import com.github.RuSichPT.Crypto.exchange.exception.errors.ErrorName;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -70,7 +72,7 @@ public class Currency {
         }
     }
 
-    public Double getValue(CurrencyName name) {
+    public Double getValue(CurrencyName name) throws CryptoException {
         if (name.equals(BTC)) {
             return getBtc();
         } else if (name.equals(TON)) {
@@ -79,6 +81,6 @@ public class Currency {
             return getRub();
         }
 
-        throw new RuntimeException("Валюта с таким именем" + name.getName() + " отсутствует");
+        throw new CryptoException(ErrorName.NOT_FOUND_CURRENCY);
     }
 }

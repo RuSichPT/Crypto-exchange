@@ -1,22 +1,20 @@
 package com.github.RuSichPT.Crypto.exchange.services;
 
+import com.github.RuSichPT.Crypto.exchange.exception.CryptoException;
 import com.github.RuSichPT.Crypto.exchange.repositories.WalletRepository;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Wallet;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.WalletName;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.github.RuSichPT.Crypto.exchange.exception.errors.ErrorName.NOT_ENOUGH;
+
 @Service
+@AllArgsConstructor
 public class WalletServiceImpl implements WalletService {
-
-    private static final String NOT_ENOUGH = "Недостаточно средств для снятия";
-
     @Autowired
     private final WalletRepository walletRepository;
-
-    public WalletServiceImpl(WalletRepository walletRepository) {
-        this.walletRepository = walletRepository;
-    }
 
     @Override
     public Integer saveWallet(Wallet wallet) {
@@ -40,12 +38,12 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public void withdrawWallet(Wallet wallet, WalletName name, Double value) {
+    public void withdrawWallet(Wallet wallet, WalletName name, Double value) throws CryptoException {
         if (wallet.isEnoughMoney(name, value)) {
             double difference = wallet.getValue(name) - value;
             wallet.setValue(name, difference);
         } else {
-            // TODO: 28.02.2023 исключ NOT_ENOUGH
+            throw new CryptoException(NOT_ENOUGH);
         }
         saveWallet(wallet);
     }

@@ -1,13 +1,8 @@
 package com.github.RuSichPT.Crypto.exchange.controllers;
 
-import com.github.RuSichPT.Crypto.exchange.models.FillUpRequest;
-import com.github.RuSichPT.Crypto.exchange.models.SecretKey;
-import com.github.RuSichPT.Crypto.exchange.models.WalletResponse;
-import com.github.RuSichPT.Crypto.exchange.models.WithdrawRequest;
-import com.github.RuSichPT.Crypto.exchange.repositories.entities.TransactionName;
-import com.github.RuSichPT.Crypto.exchange.repositories.entities.User;
-import com.github.RuSichPT.Crypto.exchange.repositories.entities.Wallet;
-import com.github.RuSichPT.Crypto.exchange.repositories.entities.WalletName;
+import com.github.RuSichPT.Crypto.exchange.models.*;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.*;
+import com.github.RuSichPT.Crypto.exchange.services.CurrencyService;
 import com.github.RuSichPT.Crypto.exchange.services.TransactionService;
 import com.github.RuSichPT.Crypto.exchange.services.UserService;
 import com.github.RuSichPT.Crypto.exchange.services.WalletService;
@@ -16,13 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("crypto")
+@RequestMapping("api/v1/crypto")
 @AllArgsConstructor
 public class UserController {
     @Autowired
     private final UserService userService;
     @Autowired
     private final WalletService walletService;
+    @Autowired
+    private final CurrencyService currencyService;
     @Autowired
     private final TransactionService transactionService;
 
@@ -34,8 +31,8 @@ public class UserController {
     }
 
     @GetMapping(path = "wallet")
-    public Wallet getWallet(@RequestBody SecretKey secretKey) {
-        User user = userService.findUserBySecretKey(secretKey.getValue());
+    public Wallet getWallet(String secretKey) {
+        User user = userService.findUserBySecretKey(secretKey);
         return user.getWallet();
     }
 
@@ -61,5 +58,24 @@ public class UserController {
         transactionService.saveTransaction(TransactionName.SUBTRACT, user.getUserName());
 
         return new WalletResponse(name, wallet.getValue(name));
+    }
+
+
+    @PostMapping(path = "wallet/exchange")
+    public ExchangeResponse exchangeCurrency(@RequestBody ExchangeRequest request) {
+        User user = userService.findUserBySecretKey(request.getSecretKey());
+
+        CurrencyName currencyFrom = request.getCurrencyFrom();
+        CurrencyName currencyTo = request.getCurrencyTo();
+        Double amountFrom = request.getAmountFrom();
+
+        Wallet wallet = user.getWallet();
+
+        walletService.withdrawWallet(wallet, WalletName.getWalletName(currencyFrom), amountFrom);
+        Double amountTo = currencyService.exchangeCurrency(currencyFrom, currencyTo, amountFrom);
+        walletService.fillUpWallet(wallet, WalletName.getWalletName(currencyTo), amountTo);
+        transactionService.saveTransaction(TransactionName.EXCHANGE, user.getUserName());
+
+        return new ExchangeResponse(currencyFrom, currencyTo, amountFrom, amountTo);
     }
 }
