@@ -1,9 +1,10 @@
-package com.github.RuSichPT.Crypto.exchange.services;
+package com.github.RuSichPT.Crypto.exchange.services.impl;
 
 import com.github.RuSichPT.Crypto.exchange.exception.CryptoException;
 import com.github.RuSichPT.Crypto.exchange.exception.errors.ErrorName;
 import com.github.RuSichPT.Crypto.exchange.repositories.AdminRepository;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Admin;
+import com.github.RuSichPT.Crypto.exchange.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

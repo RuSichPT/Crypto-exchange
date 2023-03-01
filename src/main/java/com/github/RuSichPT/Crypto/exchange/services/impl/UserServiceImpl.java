@@ -1,4 +1,4 @@
-package com.github.RuSichPT.Crypto.exchange.services;
+package com.github.RuSichPT.Crypto.exchange.services.impl;
 
 import com.github.RuSichPT.Crypto.exchange.exception.CryptoException;
 import com.github.RuSichPT.Crypto.exchange.exception.errors.ErrorName;
@@ -7,6 +7,7 @@ import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.CurrencyN
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.User;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Wallet;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.WalletName;
+import com.github.RuSichPT.Crypto.exchange.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,10 @@
-package com.github.RuSichPT.Crypto.exchange.services;
+package com.github.RuSichPT.Crypto.exchange.services.impl;
 
 import com.github.RuSichPT.Crypto.exchange.exception.CryptoException;
 import com.github.RuSichPT.Crypto.exchange.repositories.WalletRepository;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Wallet;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.WalletName;
+import com.github.RuSichPT.Crypto.exchange.services.WalletService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

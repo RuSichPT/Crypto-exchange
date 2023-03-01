@@ -1,8 +1,9 @@
-package com.github.RuSichPT.Crypto.exchange.services;
+package com.github.RuSichPT.Crypto.exchange.services.impl;
 
 import com.github.RuSichPT.Crypto.exchange.repositories.TransactionRepository;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.Transaction;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.TransactionName;
+import com.github.RuSichPT.Crypto.exchange.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
