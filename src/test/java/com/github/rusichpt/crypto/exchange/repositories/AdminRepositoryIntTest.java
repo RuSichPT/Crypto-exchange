@@ -14,14 +14,14 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
-public class AdminRepositoryIntTest {
+class AdminRepositoryIntTest {
 
     @Autowired
     private AdminRepository adminRepository;
 
     @Test
     @Sql(scripts = {"/sql/delete_tables.sql", "/sql/insert_admin.sql"})
-    public void shouldCorrectlyFindAdmin() {
+    void shouldCorrectlyFindAdmin() {
         Optional<Admin> optAdmin = adminRepository.findById("admin");
 
         Assertions.assertTrue(optAdmin.isPresent());

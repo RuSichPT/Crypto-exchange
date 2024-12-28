@@ -14,17 +14,17 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
-public class TransactionRepositoryIntTest {
+class TransactionRepositoryIntTest {
 
     @Autowired
     private TransactionRepository transactionRepository;
 
     @Test
     @Sql(scripts = {"/sql/delete_tables.sql", "/sql/insert_transaction.sql"})
-    public void shouldCorrectlyFindTransaction() {
+    void shouldCorrectlyFindTransaction() {
         Optional<Transaction> optTransaction = transactionRepository.findById(1);
 
         Assertions.assertTrue(optTransaction.isPresent());
-        Assertions.assertEquals(optTransaction.get().getName(), "add");
+        Assertions.assertEquals("add", optTransaction.get().getName());
     }
 }

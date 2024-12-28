@@ -14,14 +14,14 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
-public class WalletRepositoryIntTest {
+class WalletRepositoryIntTest {
 
     @Autowired
     private WalletRepository walletRepository;
 
     @Test
     @Sql(scripts = {"/sql/delete_tables.sql", "/sql/insert_wallet.sql"})
-    public void shouldCorrectlyUpdateWallet() {
+    void shouldCorrectlyUpdateWallet() {
         Integer id = 1;
         Double rub = 1500.0;
         Wallet newWallet = new Wallet();

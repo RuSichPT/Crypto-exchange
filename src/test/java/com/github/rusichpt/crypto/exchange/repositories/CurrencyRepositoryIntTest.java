@@ -14,17 +14,17 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
-public class CurrencyRepositoryIntTest {
+class CurrencyRepositoryIntTest {
 
     @Autowired
     private CurrencyRepository currencyRepository;
 
     @Test
     @Sql(scripts = {"/sql/delete_tables.sql", "/sql/insert_currency.sql"})
-    public void shouldCorrectlyFindCurrency() {
+    void shouldCorrectlyFindCurrency() {
         Optional<Currency> optCurrency = currencyRepository.findById("rub");
 
         Assertions.assertTrue(optCurrency.isPresent());
-        Assertions.assertEquals(optCurrency.get().getRub(), 1);
+        Assertions.assertEquals(1, optCurrency.get().getRub());
     }
 }

@@ -14,13 +14,13 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
-public class UserRepositoryIntTest {
+class UserRepositoryIntTest {
     @Autowired
     private UserRepository userRepository;
 
     @Test
     @Sql(scripts = {"/sql/delete_tables.sql", "/sql/insert_wallet.sql", "/sql/insert_user.sql"})
-    public void shouldCorrectlyFindUser() {
+    void shouldCorrectlyFindUser() {
         String username = "vasya_vezunchik";
         Double rub = 3500.0;
         Optional<User> optionalUser = userRepository.findById(username);
@@ -31,7 +31,7 @@ public class UserRepositoryIntTest {
 
     @Test
     @Sql(scripts = {"/sql/delete_tables.sql", "/sql/insert_wallet.sql", "/sql/insert_user.sql"})
-    public void shouldCorrectlyFindUserBySecretKey() {
+    void shouldCorrectlyFindUserBySecretKey() {
         String secretKey = "AAFeyWzOnlD-9G4i662PdKn2B-b4BwrCNA";
 
         Optional<User> optionalUser = userRepository.findBySecretKey(secretKey);
