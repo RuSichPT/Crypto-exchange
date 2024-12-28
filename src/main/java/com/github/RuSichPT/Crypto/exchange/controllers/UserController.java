@@ -1,7 +1,8 @@
 package com.github.RuSichPT.Crypto.exchange.controllers;
 
 import com.github.RuSichPT.Crypto.exchange.models.*;
-import com.github.RuSichPT.Crypto.exchange.repositories.entities.*;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.User;
+import com.github.RuSichPT.Crypto.exchange.repositories.entities.Wallet;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.CurrencyName;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.TransactionName;
 import com.github.RuSichPT.Crypto.exchange.repositories.entities.enums.WalletName;
@@ -9,21 +10,16 @@ import com.github.RuSichPT.Crypto.exchange.services.CurrencyService;
 import com.github.RuSichPT.Crypto.exchange.services.TransactionService;
 import com.github.RuSichPT.Crypto.exchange.services.UserService;
 import com.github.RuSichPT.Crypto.exchange.services.WalletService;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/crypto")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserController {
-    @Autowired
     private final UserService userService;
-    @Autowired
     private final WalletService walletService;
-    @Autowired
     private final CurrencyService currencyService;
-    @Autowired
     private final TransactionService transactionService;
 
     @PostMapping(path = "registration")

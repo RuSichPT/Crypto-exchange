@@ -40,9 +40,9 @@
 - DataJpaTest  
 
 ## Запуск
-Создать базу данных
+Запустить базу данных
 
-    localhost:5432/crypto_db  
+    docker compose up -d
 
 Заполнить в  application.properties следующие поля: 
 

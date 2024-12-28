@@ -11,8 +11,7 @@ import com.github.RuSichPT.Crypto.exchange.services.TransactionService;
 import com.github.RuSichPT.Crypto.exchange.services.UserService;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,15 +24,11 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("api/v1/crypto")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AdminController {
-    @Autowired
     private final UserService userService;
-    @Autowired
     private final CurrencyService currencyService;
-    @Autowired
     private final AdminService adminService;
-    @Autowired
     private final TransactionService transactionService;
 
     @GetMapping(path = "currency")

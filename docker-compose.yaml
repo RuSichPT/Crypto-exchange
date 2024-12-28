@@ -1,0 +1,11 @@
+services:
+
+  postgres: # https://hub.docker.com/_/postgres
+    image: postgres:16.6
+    restart: always
+    environment:
+      POSTGRES_DB: crypto_db
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: sa
+    ports:
+      - 5432:5432
